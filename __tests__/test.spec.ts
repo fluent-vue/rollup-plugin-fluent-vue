@@ -1,11 +1,13 @@
-import { join } from 'path'
+import { describe, it, expect } from 'vitest'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 import { rollup, RollupOptions } from 'rollup'
 import vue from 'rollup-plugin-vue'
 
 import fluentPlugin from '../src'
 
-process.chdir(join(__dirname, 'fixtures'))
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const testBundle = async (options: RollupOptions): Promise<string> => {
   const bundle = await rollup({
@@ -19,11 +21,11 @@ const testBundle = async (options: RollupOptions): Promise<string> => {
 }
 
 describe('rollup plugin', () => {
-  test('generates custom block code', async () => {
+  it('generates custom block code', async () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: 'test.vue',
+      input: resolve(__dirname, 'fixtures/test.vue'),
       plugins: [
         vue({
           customBlocks: ['fluent']
@@ -36,11 +38,11 @@ describe('rollup plugin', () => {
     expect(code).toMatchSnapshot()
   })
 
-  test('custom blockType', async () => {
+  it('custom blockType', async () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: 'blockType.vue',
+      input: resolve(__dirname, 'fixtures/blockType.vue'),
       plugins: [
         vue({
           customBlocks: ['i18n']
@@ -55,10 +57,10 @@ describe('rollup plugin', () => {
     expect(code).toMatchSnapshot()
   })
 
-  test('errors with no locale attr', async () => {
+  it('errors with no locale attr', async () => {
     // Arrange
     const func = async (): Promise<string> => await testBundle({
-      input: 'noLocale.vue',
+      input: resolve(__dirname, 'fixtures/noLocale.vue'),
       plugins: [
         vue({
           customBlocks: ['fluent']
@@ -69,7 +71,12 @@ describe('rollup plugin', () => {
     })
 
     // Act
+    try {
+      await func()
+    }
     // Assert
-    await expect(func).rejects.toThrowErrorMatchingSnapshot()
+    catch(err) {
+      expect(err).toMatchSnapshot()
+    }
   })
 })

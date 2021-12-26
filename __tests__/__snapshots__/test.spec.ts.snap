@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
 
-exports[`rollup plugin custom blockType 1`] = `
+exports[`rollup plugin > custom blockType 1`] = `
 "'use strict';
 
 var vue = require('vue');
@@ -37,15 +37,15 @@ const script = {};
 if (typeof block0 === 'function') block0(script);
 
 script.render = render;
-script.__file = \\"blockType.vue\\";
+script.__file = \\"__tests__/fixtures/blockType.vue\\";
 
 module.exports = script;
 "
 `;
 
-exports[`rollup plugin errors with no locale attr 1`] = `"Custom block does not have locale attribute"`;
+exports[`rollup plugin > errors with no locale attr 1`] = `[Error: Custom block does not have locale attribute]`;
 
-exports[`rollup plugin generates custom block code 1`] = `
+exports[`rollup plugin > generates custom block code 1`] = `
 "'use strict';
 
 var vue = require('vue');
@@ -82,7 +82,7 @@ const script = {};
 if (typeof block0 === 'function') block0(script);
 
 script.render = render;
-script.__file = \\"test.vue\\";
+script.__file = \\"__tests__/fixtures/test.vue\\";
 
 module.exports = script;
 "
