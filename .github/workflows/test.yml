@@ -29,6 +29,9 @@ jobs:
           version: 6.x.x
           run_install: true
 
+      - name: Info
+        run: npx envinfo --system --npmPackages '{vitest,vite,@vitejs/*}' --binaries --browsers
+
       - name: Test
         run: pnpm test -- --coverage
 
