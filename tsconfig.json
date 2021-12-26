@@ -5,6 +5,7 @@
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
-    "lib": ["ES2020"]
+    "lib": ["ES2020"],
+    "types": ["node"]
   }
 }

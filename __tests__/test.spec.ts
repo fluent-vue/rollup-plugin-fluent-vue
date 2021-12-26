@@ -7,7 +7,7 @@ import vue from 'rollup-plugin-vue'
 
 import fluentPlugin from '../src'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const baseDir = dirname(fileURLToPath(import.meta.url))
 
 const testBundle = async (options: RollupOptions): Promise<string> => {
   const bundle = await rollup({
@@ -25,7 +25,7 @@ describe('rollup plugin', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(__dirname, 'fixtures/test.vue'),
+      input: resolve(baseDir, 'fixtures/test.vue'),
       plugins: [
         vue({
           customBlocks: ['fluent']
@@ -42,7 +42,7 @@ describe('rollup plugin', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(__dirname, 'fixtures/blockType.vue'),
+      input: resolve(baseDir, 'fixtures/blockType.vue'),
       plugins: [
         vue({
           customBlocks: ['i18n']
@@ -60,7 +60,7 @@ describe('rollup plugin', () => {
   it('errors with no locale attr', async () => {
     // Arrange
     const func = async (): Promise<string> => await testBundle({
-      input: resolve(__dirname, 'fixtures/noLocale.vue'),
+      input: resolve(baseDir, 'fixtures/noLocale.vue'),
       plugins: [
         vue({
           customBlocks: ['fluent']
@@ -70,12 +70,12 @@ describe('rollup plugin', () => {
       external: ['vue', '@fluent/bundle']
     })
 
-    // Act
+    // TODO: Use rejects
     try {
+      // Act
       await func()
-    }
-    // Assert
-    catch(err) {
+    } catch (err) {
+      // Assert
       expect(err).toMatchSnapshot()
     }
   })

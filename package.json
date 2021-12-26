@@ -41,17 +41,25 @@
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@types/node": "^17.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^5.8.0",
     "@vue/compiler-sfc": "^3.2.26",
     "c8": "^7.10.0",
+    "eslint": "^7.12.1",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.0.0",
     "rollup": "^2.62.0",
     "rollup-plugin-vue": "^6.0.0",
     "tsup": "^5.11.9",
-    "typescript": "^4.5.4",
+    "typescript": "*",
     "vite": "^2.7.7",
-    "vitest": "^0.0.113"
+    "vitest": "^0.0.114"
   }
 }

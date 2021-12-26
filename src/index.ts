@@ -1,4 +1,5 @@
 import type { Plugin } from 'rollup'
+import { URLSearchParams } from 'url'
 
 export interface PluginOptions {
   blockType?: string
