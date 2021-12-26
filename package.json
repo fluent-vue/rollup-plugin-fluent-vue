@@ -20,12 +20,12 @@
     "rollup-plugin",
     "vite-plugin"
   ],
-  "main": "dist/rollup-plugin-fluent-vue.cjs.js",
-  "module": "dist/rollup-plugin-fluent-vue.esm.js",
-  "types": "dist/rollup-plugin-fluent-vue.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
-    "import": "./dist/rollup-plugin-fluent-vue.esm.js",
-    "require": "./dist/rollup-plugin-fluent-vue.cjs.js"
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
   },
   "files": [
     "dist",
@@ -38,7 +38,12 @@
   },
   "homepage": "https://fluent-vue.demivan.me/integrations/rollup.html",
   "license": "MIT",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts"
+  },
   "devDependencies": {
-    "rollup": "^2.58.3"
+    "rollup": "^2.62.0",
+    "tsup": "^5.11.9",
+    "typescript": "^4.5.4"
   }
 }
