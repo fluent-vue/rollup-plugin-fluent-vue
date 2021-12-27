@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [17]
+        node: [16, 17]
     steps:
       - uses: actions/checkout@v2.3.5
         with:
@@ -28,9 +28,6 @@ jobs:
         with:
           version: 6.x.x
           run_install: true
-
-      - name: Info
-        run: npx envinfo --system --npmPackages '{vitest,vite,@vitejs/*}' --binaries --browsers
 
       - name: Test
         run: pnpm test -- --coverage
