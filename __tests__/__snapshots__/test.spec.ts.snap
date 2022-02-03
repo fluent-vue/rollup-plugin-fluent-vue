@@ -16,8 +16,7 @@ function render(_ctx, _cache) {
 function block0 (Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
-  target.fluent['en'] = new bundle.FluentResource(\`
-# Simple things are simple.
+  target.fluent['en'] = new bundle.FluentResource(\`# Simple things are simple.
 hello-user = Hello, {$userName}!
 
 # Complex things are possible.
@@ -29,8 +28,7 @@ shared-photos =
      [male] his stream
      [female] her stream
     *[other] their stream
-  }.
-\`);
+  }.\`);
 }
 
 const script = {};
@@ -61,8 +59,7 @@ function render(_ctx, _cache) {
 function block0 (Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
-  target.fluent['en'] = new bundle.FluentResource(\`
-# Simple things are simple.
+  target.fluent['en'] = new bundle.FluentResource(\`# Simple things are simple.
 hello-user = Hello, {$userName}!
 
 # Complex things are possible.
@@ -74,8 +71,7 @@ shared-photos =
      [male] his stream
      [female] her stream
     *[other] their stream
-  }.
-\`);
+  }.\`);
 }
 
 const script = {};
@@ -193,15 +189,7 @@ function normalizeComponent (
 function block0 (Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
-  target.fluent['en'] = new bundle.FluentResource(\`
-
-
-
-
-
-
-
-# Simple things are simple.
+  target.fluent['en'] = new bundle.FluentResource(\`# Simple things are simple.
 hello-user = Hello, {$userName}!
 
 # Complex things are possible.
@@ -213,8 +201,7 @@ shared-photos =
      [male] his stream
      [female] her stream
     *[other] their stream
-  }.
-\`);
+  }.\`);
 }
 
 const __vue2_script = {};

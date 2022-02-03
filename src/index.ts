@@ -13,6 +13,9 @@ export default function fluentPlugin ({ blockType = 'fluent' }: PluginOptions = 
         return
       }
 
+      // vite-plugin-vue2 pads SFC file sections with newlines - trim those
+      const data = code.replace(/^(\n|\r\n)+|(\n|\r\n)+$/g, '')
+
       const [, rawQuery] = id.split('?', 2)
       const query = new URLSearchParams(rawQuery)
 
@@ -28,7 +31,7 @@ import { FluentResource } from '@fluent/bundle'
 export default function (Component) {
   const target = Component.options || Component
   target.fluent = target.fluent || {}
-  target.fluent['${locale}'] = new FluentResource(\`${code}\`)
+  target.fluent['${locale}'] = new FluentResource(\`${data}\`)
 }`
     }
   }
