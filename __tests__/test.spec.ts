@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 
 import { rollup, RollupOptions } from 'rollup'
 import vue from 'rollup-plugin-vue'
+import { createVuePlugin } from 'vite-plugin-vue2'
 
 import fluentPlugin from '../src'
 
@@ -30,6 +31,21 @@ describe('rollup plugin', () => {
         vue({
           customBlocks: ['fluent']
         }),
+        fluentPlugin()
+      ]
+    })
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
+  it('works with vue 2', async () => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      input: resolve(baseDir, 'fixtures/test.vue'),
+      plugins: [
+        createVuePlugin(),
         fluentPlugin()
       ]
     })
