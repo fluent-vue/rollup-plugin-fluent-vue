@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-fluent-vue",
   "version": "3.0.0",
-  "description": "Rollup and Vite plugin with custom block support for fluent-vue",
+  "description": "Rollup and Vite plugin for custom block support for fluent-vue",
   "keywords": [
     "localization",
     "l10n",
@@ -60,6 +60,8 @@
     "tsup": "^5.11.9",
     "typescript": "*",
     "vite": "^2.7.7",
-    "vitest": "^0.0.114"
+    "vite-plugin-vue2": "^1.9.3",
+    "vitest": "^0.0.114",
+    "vue-template-compiler": "^2.6.14"
   }
 }
