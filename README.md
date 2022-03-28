@@ -29,8 +29,8 @@ import fluentPlugin from 'rollup-plugin-fluent-vue'
 
 module.exports = {
   plugins: [
-    fluentPlugin()
-  ]
+    fluentPlugin(),
+  ],
 }
 ```
 
@@ -41,7 +41,7 @@ import vue from '@vitejs/plugin-vue'
 import fluentPlugin from 'rollup-plugin-fluent-vue'
 
 export default {
-  plugins: [vue(), fluentPlugin()]
+  plugins: [vue(), fluentPlugin()],
 }
 ```
 
@@ -65,7 +65,7 @@ Example of `App.vue` with custom block:
 
 <script>
 export default {
-  name: 'app'
+  name: 'App',
 }
 </script>
 

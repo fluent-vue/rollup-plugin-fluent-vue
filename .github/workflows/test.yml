@@ -11,7 +11,7 @@ env:
 
 jobs:
   test:
-    name: "Test on Node.js ${{ matrix.node }} OS: ${{ matrix.os }}"
+    name: 'Test on Node.js ${{ matrix.node }} OS: ${{ matrix.os }}'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -37,7 +37,7 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    name: "Lint source code"
+    name: Lint source code
     steps:
       - uses: actions/checkout@v3.0.0
         with:
