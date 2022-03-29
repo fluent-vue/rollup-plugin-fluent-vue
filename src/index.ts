@@ -3,8 +3,7 @@ import { join, relative } from 'path'
 import { promises as fs } from 'fs'
 import MagicString from 'magic-string'
 
-import type { Plugin } from 'vite'
-import { normalizePath } from 'vite'
+import type { Plugin } from 'rollup'
 
 export interface ExternalConfig {
   baseDir: string
@@ -20,6 +19,10 @@ export interface PluginOptions {
 interface InsertInfo {
   insertPos: number
   target: string
+}
+
+function normalizePath(path: string) {
+  return path.replace(/\\/g, '/')
 }
 
 /*
