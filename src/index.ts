@@ -3,7 +3,8 @@ import { join, relative } from 'path'
 import { promises as fs } from 'fs'
 import MagicString from 'magic-string'
 
-import type { Plugin } from 'rollup'
+import type { Plugin } from 'vite'
+import { normalizePath } from 'vite'
 
 export interface ExternalConfig {
   baseDir: string
@@ -71,7 +72,7 @@ export default new FluentResource(${JSON.stringify(ftl)})
 
         const magic = new MagicString(code, { filename: id })
 
-        magic.prepend(`${external.locales.map(locale => `import ${locale}_ftl from '${join(external.ftlDir, locale, relativePath)}.ftl'`).join(';\n')};\n`)
+        magic.prepend(`${external.locales.map(locale => `import ${locale}_ftl from '${normalizePath(join(external.ftlDir, locale, relativePath))}.ftl'`).join(';\n')};\n`)
         magic.prepend('import { FluentResource } from \'@fluent/bundle\';\n')
 
         const { insertPos, target } = getInsertInfo(code)
