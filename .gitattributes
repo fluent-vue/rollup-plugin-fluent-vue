@@ -1,1 +1,3 @@
-﻿*.ftl text eol=lf
+﻿* text=auto
+
+*.ftl text eol=lf
