@@ -83,13 +83,7 @@ export default new FluentResource(${JSON.stringify(ftl)})
       }
     },
     async transform(code, id) {
-      if (!id.includes(`vue&type=${blockType}`) && external == null)
-        return
-
-      if (external != null && !id.endsWith('.vue'))
-        return
-
-      if (external != null) {
+      if (id.endsWith('.vue') && external != null) {
         const relativePath = relative(external.baseDir, id)
 
         const magic = new MagicString(code, { filename: id })
@@ -105,7 +99,8 @@ export default new FluentResource(${JSON.stringify(ftl)})
           map: magic.generateMap({ hires: true }),
         }
       }
-      else {
+
+      if (id.includes(`vue&type=${blockType}`)) {
         // Custom block support
 
         // vite-plugin-vue2 pads SFC file sections with newlines - trim those

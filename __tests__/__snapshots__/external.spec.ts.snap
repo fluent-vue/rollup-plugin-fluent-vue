@@ -27,7 +27,7 @@ function __vue2_injectStyles (context) {
   }
 }
 
-__component__.options.fluent = { en: en_ftl, da: da_ftl };
+__component__.options.fluent = { 'en': en_ftl, 'da': da_ftl };
 __component__.options.__file = \\"fixtures/components/external.vue\\"
 /* hot reload */
 import __VUE_HMR_RUNTIME__ from \\"/@id/__x00__/vite/vueHotReload\\"
@@ -62,7 +62,7 @@ function _sfc_render(_ctx, _cache) {
 }
 
 
-_sfc_main.fluent = { en: en_ftl, da: da_ftl };
+_sfc_main.fluent = { 'en': en_ftl, 'da': da_ftl };
 _sfc_main.__hmrId = \\"4c0553ad\\"
 typeof __VUE_HMR_RUNTIME__ !== 'undefined' && __VUE_HMR_RUNTIME__.createRecord(_sfc_main.__hmrId, _sfc_main)
 import.meta.hot.accept(({ default: updated, _rerender_only }) => {
@@ -85,7 +85,7 @@ import { render } from \\"/fixtures/components/external.vue?vue&type=template&id
 
 
 script.render = render
-script.fluent = { en: en_ftl, da: da_ftl };
+script.fluent = { 'en': en_ftl, 'da': da_ftl };
 script.__file = \\"__tests__/fixtures/components/external.vue\\"
 export default script"
 `;
@@ -116,7 +116,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 
-_sfc_main.fluent = { en: en_ftl, da: da_ftl };
+_sfc_main.fluent = { 'en': en_ftl, 'da': da_ftl };
 _sfc_main.__hmrId = \\"f4d31108\\"
 typeof __VUE_HMR_RUNTIME__ !== 'undefined' && __VUE_HMR_RUNTIME__.createRecord(_sfc_main.__hmrId, _sfc_main)
 import.meta.hot.accept(({ default: updated, _rerender_only }) => {
