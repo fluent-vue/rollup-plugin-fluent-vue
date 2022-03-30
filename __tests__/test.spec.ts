@@ -2,7 +2,7 @@ import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 
-import type { InlineConfig } from 'vite';
+import type { InlineConfig } from 'vite'
 import { createServer } from 'vite'
 import vue3base from '@vitejs/plugin-vue'
 import compiler from '@vue/compiler-sfc'
