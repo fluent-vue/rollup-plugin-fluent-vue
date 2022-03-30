@@ -1,40 +1,71 @@
-import { dirname, resolve } from 'path'
+import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 
-import type { RollupOptions } from 'rollup'
-import { rollup } from 'rollup'
-import vue from 'rollup-plugin-vue'
-import { createVuePlugin } from 'vite-plugin-vue2'
+import type { InlineConfig } from 'vite';
+import { createServer } from 'vite'
+import vue3base from '@vitejs/plugin-vue'
+import compiler from '@vue/compiler-sfc'
+import rollupVue3 from 'rollup-plugin-vue'
+import { createVuePlugin as vue2 } from 'vite-plugin-vue2'
 
 import fluentPlugin from '../src'
 
+const vue3 = () => vue3base({
+  compiler,
+})
+
 const baseDir = dirname(fileURLToPath(import.meta.url))
 
-const testBundle = async(options: RollupOptions): Promise<string> => {
-  const bundle = await rollup({
+const testBundle = async(options: InlineConfig, file: string): Promise<string | undefined> => {
+  const vite = await createServer({
+    root: baseDir,
     ...options,
-    external: ['vue', '@fluent/bundle'],
+    plugins: [
+      ...options.plugins,
+      {
+        resolveId(id) {
+          if (id === 'vue' || id === '@fluent/bundle')
+            return id
+        },
+        load(id) {
+          if (id === 'vue' || id === '@fluent/bundle')
+            return 'export default {}'
+        },
+      },
+    ],
   })
 
-  const { output } = await bundle.generate({ format: 'cjs', exports: 'auto' })
-  const [{ code }] = output
-  return code
+  const output = await vite.transformRequest(file)
+  return output?.code
 }
 
-describe('rollup plugin', () => {
+describe('vite plugin', () => {
   it('generates custom block code', async() => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(baseDir, 'fixtures/test.vue'),
       plugins: [
-        vue({
+        vue3(),
+        fluentPlugin(),
+      ],
+    }, '/fixtures/test.vue')
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
+  it('works with rollup plugin', async() => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      plugins: [
+        rollupVue3({
           customBlocks: ['fluent'],
         }),
         fluentPlugin(),
       ],
-    })
+    }, '/fixtures/test.vue')
 
     // Assert
     expect(code).toMatchSnapshot()
@@ -44,12 +75,11 @@ describe('rollup plugin', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(baseDir, 'fixtures/test.vue'),
       plugins: [
-        createVuePlugin(),
+        vue2(),
         fluentPlugin(),
       ],
-    })
+    }, '/fixtures/test.vue')
 
     // Assert
     expect(code).toMatchSnapshot()
@@ -59,16 +89,13 @@ describe('rollup plugin', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(baseDir, 'fixtures/blockType.vue'),
       plugins: [
-        vue({
-          customBlocks: ['custom'],
-        }), fluentPlugin({
+        vue3(),
+        fluentPlugin({
           blockType: 'custom',
         }),
       ],
-      external: ['vue', '@fluent/bundle'],
-    })
+    }, '/fixtures/blockType.vue')
 
     // Assert
     expect(code).toMatchSnapshot()
@@ -76,16 +103,12 @@ describe('rollup plugin', () => {
 
   it('errors with no locale attr', async() => {
     // Arrange
-    const func = async(): Promise<string> => await testBundle({
-      input: resolve(baseDir, 'fixtures/noLocale.vue'),
+    const func = async(): Promise<string | undefined> => await testBundle({
       plugins: [
-        vue({
-          customBlocks: ['fluent'],
-        }),
+        vue3(),
         fluentPlugin(),
       ],
-      external: ['vue', '@fluent/bundle'],
-    })
+    }, '/fixtures/noLocale.vue')
 
     // TODO: Use rejects
     try {

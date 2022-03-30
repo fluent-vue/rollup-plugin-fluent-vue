@@ -3,24 +3,41 @@ import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 
-import type { RollupOptions } from 'rollup'
-import { rollup } from 'rollup'
-import vue3 from 'rollup-plugin-vue'
+import rollupVue3 from 'rollup-plugin-vue'
+import vue3base from '@vitejs/plugin-vue'
+import compiler from '@vue/compiler-sfc'
 import { createVuePlugin as vue2 } from 'vite-plugin-vue2'
 
+import type { InlineConfig } from 'vite'
+import { createServer } from 'vite'
 import fluentPlugin from '../src'
+
+const vue3 = () => vue3base({
+  compiler,
+})
 
 const baseDir = dirname(fileURLToPath(import.meta.url))
 
-const testBundle = async(options: RollupOptions): Promise<string> => {
-  const bundle = await rollup({
+const testBundle = async(options: InlineConfig, file: string): Promise<string | undefined> => {
+  const vite = await createServer({
     ...options,
-    external: ['vue', '@fluent/bundle'],
+    plugins: [
+      ...options.plugins,
+      {
+        resolveId(id) {
+          if (id === 'vue' || id === '@fluent/bundle')
+            return id
+        },
+        load(id) {
+          if (id === 'vue' || id === '@fluent/bundle')
+            return 'export default {}'
+        },
+      },
+    ],
   })
 
-  const { output } = await bundle.generate({ format: 'cjs', exports: 'auto' })
-  const [{ code }] = output
-  return code
+  const output = await vite.transformRequest(file)
+  return output?.code
 }
 
 describe('external ftl file support', () => {
@@ -28,7 +45,7 @@ describe('external ftl file support', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(baseDir, 'fixtures/components/external.vue'),
+      root: baseDir,
       plugins: [
         vue3(),
         fluentPlugin({
@@ -39,7 +56,7 @@ describe('external ftl file support', () => {
           },
         }),
       ],
-    })
+    }, '/fixtures/components/external.vue')
 
     // Assert
     expect(code).toMatchSnapshot()
@@ -49,7 +66,7 @@ describe('external ftl file support', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(baseDir, 'fixtures/components/external.setup.vue'),
+      root: baseDir,
       plugins: [
         vue3(),
         fluentPlugin({
@@ -60,7 +77,28 @@ describe('external ftl file support', () => {
           },
         }),
       ],
-    })
+    }, '/fixtures/components/external.setup.vue')
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
+  it('works with vue 3 rollup plugin', async() => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      root: baseDir,
+      plugins: [
+        rollupVue3(),
+        fluentPlugin({
+          external: {
+            baseDir: resolve(baseDir, 'fixtures'),
+            ftlDir: resolve(baseDir, 'fixtures/ftl'),
+            locales: ['en', 'da'],
+          },
+        }),
+      ],
+    }, '/fixtures/components/external.vue')
 
     // Assert
     expect(code).toMatchSnapshot()
@@ -70,7 +108,7 @@ describe('external ftl file support', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      input: resolve(baseDir, 'fixtures/components/external.vue'),
+      root: baseDir,
       plugins: [
         vue2(),
         fluentPlugin({
@@ -81,7 +119,7 @@ describe('external ftl file support', () => {
           },
         }),
       ],
-    })
+    }, '/fixtures/components/external.vue')
 
     // Assert
     expect(code).toMatchSnapshot()

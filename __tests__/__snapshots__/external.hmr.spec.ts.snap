@@ -75,3 +75,33 @@ script.fluent = { en: en_ftl, da: da_ftl };
 script.__file = \\"__tests__/fixtures/components/external.setup.vue\\"
 export default script"
 `;
+
+exports[`vite plugin with external support > works with vue 3 script setup 2`] = `
+"import { FluentResource } from '/@id/@fluent/bundle';
+import en_ftl from '/fixtures/ftl/en/components/external.setup.ts.vue.ftl?import';
+import da_ftl from '/fixtures/ftl/da/components/external.setup.ts.vue.ftl?import';
+import script from \\"/fixtures/components/external.setup.ts.vue?vue&type=script&setup=true&lang.ts\\"
+export * from \\"/fixtures/components/external.setup.ts.vue?vue&type=script&setup=true&lang.ts\\"
+
+
+
+
+script.fluent = { en: en_ftl, da: da_ftl };
+script.__file = \\"__tests__/fixtures/components/external.setup.ts.vue\\"
+export default script"
+`;
+
+exports[`vite plugin with external support > works with vue 3 script setup ts 1`] = `
+"import { FluentResource } from '/@id/@fluent/bundle';
+import en_ftl from '/fixtures/ftl/en/components/external.setup.ts.vue.ftl?import';
+import da_ftl from '/fixtures/ftl/da/components/external.setup.ts.vue.ftl?import';
+import script from \\"/fixtures/components/external.setup.ts.vue?vue&type=script&setup=true&lang.ts\\"
+export * from \\"/fixtures/components/external.setup.ts.vue?vue&type=script&setup=true&lang.ts\\"
+
+
+
+
+script.fluent = { en: en_ftl, da: da_ftl };
+script.__file = \\"__tests__/fixtures/components/external.setup.ts.vue\\"
+export default script"
+`;
