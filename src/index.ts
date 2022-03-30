@@ -9,6 +9,7 @@ export interface ExternalConfig {
   baseDir: string
   ftlDir: string
   locales: string[]
+  warnMissing?: boolean
 }
 
 export interface PluginOptions {
@@ -64,7 +65,8 @@ export default new FluentResource(${JSON.stringify(ftl)})
 `
         }
         catch (e) {
-          this.warn(`Missing ftl file: ${id}`)
+          if (external?.warnMissing === true)
+            this.warn(`Missing ftl file: ${id}`)
           return 'export default null'
         }
       }
