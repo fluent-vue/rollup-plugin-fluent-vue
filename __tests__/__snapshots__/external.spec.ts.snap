@@ -164,10 +164,10 @@ module.exports = script;
 exports[`external ftl file support > works with vue 3 script setup 1`] = `
 "'use strict';
 
-require('@fluent/bundle');
+var bundle = require('@fluent/bundle');
 var vue = require('vue');
 
-var en_ftl = null;
+var en_ftl = new bundle.FluentResource(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 
 var da_ftl = null;
 

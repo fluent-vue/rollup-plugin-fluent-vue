@@ -1,0 +1,77 @@
+// Vitest Snapshot v1
+
+exports[`vite plugin with external support > works with vue 2 1`] = `
+"import { createHotContext as __vite__createHotContext } from \\"/@vite/client\\";import.meta.hot = __vite__createHotContext(\\"/fixtures/components/external.vue\\");import.meta.env = {\\"BASE_URL\\":\\"/\\",\\"MODE\\":\\"development\\",\\"DEV\\":true,\\"PROD\\":false,\\"SSR\\":false};import { FluentResource } from '/@id/@fluent/bundle';
+import en_ftl from '/fixtures/ftl/en/components/external.vue.ftl?import';
+import da_ftl from '/fixtures/ftl/da/components/external.vue.ftl?import';
+const __vue2_script = {}
+import { render as __vue2_render, staticRenderFns as __vue2_staticRenderFns } from \\"/fixtures/components/external.vue?vue&type=template&lang.js\\"
+const __cssModules = {}
+
+/* normalize component */
+import __vue2_normalizer from \\"/@id/__x00__/vite/vueComponentNormalizer\\"
+var __component__ = /*#__PURE__*/__vue2_normalizer(
+  __vue2_script,
+  __vue2_render,
+  __vue2_staticRenderFns,
+  false,
+  __vue2_injectStyles,
+  null,
+  null,
+  null
+)
+
+function __vue2_injectStyles (context) {
+  for(let o in __cssModules){
+    this[o] = __cssModules[o]
+  }
+}
+
+__component__.options.fluent = { en: en_ftl, da: da_ftl };
+__component__.options.__file = \\"fixtures/components/external.vue\\"
+/* hot reload */
+import __VUE_HMR_RUNTIME__ from \\"/@id/__x00__/vite/vueHotReload\\"
+import vue from \\"/@id/vue\\"
+__VUE_HMR_RUNTIME__.install(vue)
+if(!import.meta.env.SSR && __VUE_HMR_RUNTIME__.compatible){
+  if (!__VUE_HMR_RUNTIME__.isRecorded(\\"4c0553ad\\")) {
+    __VUE_HMR_RUNTIME__.createRecord(\\"4c0553ad\\", __component__.options)
+  }
+   import.meta.hot.accept((update) => {
+      __VUE_HMR_RUNTIME__.reload(\\"4c0553ad\\", update.default)
+   })
+   import.meta.hot.accept(\\"/fixtures/components/external.vue?vue&type=template&lang.js\\", (update) => {
+      __VUE_HMR_RUNTIME__.rerender(\\"4c0553ad\\", update)
+   })
+}
+export default /*#__PURE__*/(function () { return __component__.exports })()"
+`;
+
+exports[`vite plugin with external support > works with vue 3 1`] = `
+"import { FluentResource } from '/@id/@fluent/bundle';
+import en_ftl from '/fixtures/ftl/en/components/external.vue.ftl?import';
+import da_ftl from '/fixtures/ftl/da/components/external.vue.ftl?import';
+const script = {}
+import { render } from \\"/fixtures/components/external.vue?vue&type=template&id=8d0ca2ca&lang.js\\"
+
+
+script.render = render
+script.fluent = { en: en_ftl, da: da_ftl };
+script.__file = \\"__tests__/fixtures/components/external.vue\\"
+export default script"
+`;
+
+exports[`vite plugin with external support > works with vue 3 script setup 1`] = `
+"import { FluentResource } from '/@id/@fluent/bundle';
+import en_ftl from '/fixtures/ftl/en/components/external.setup.vue.ftl?import';
+import da_ftl from '/fixtures/ftl/da/components/external.setup.vue.ftl?import';
+import script from \\"/fixtures/components/external.setup.vue?vue&type=script&setup=true&lang.js\\"
+export * from \\"/fixtures/components/external.setup.vue?vue&type=script&setup=true&lang.js\\"
+
+
+
+
+script.fluent = { en: en_ftl, da: da_ftl };
+script.__file = \\"__tests__/fixtures/components/external.setup.vue\\"
+export default script"
+`;
