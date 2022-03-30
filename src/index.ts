@@ -66,18 +66,20 @@ export default function fluentPlugin({ blockType = 'fluent', external }: PluginO
     },
     async load(id) {
       if (id.endsWith('.ftl')) {
+        let ftl
         try {
-          const ftl = await fs.readFile(id, 'utf8')
-          return `
-import { FluentResource } from '@fluent/bundle'
-export default new FluentResource(${JSON.stringify(ftl)})
-`
+          ftl = await fs.readFile(id, 'utf8')
         }
         catch (e) {
           if (external?.warnMissing === true)
             this.warn(`Missing ftl file: ${id}`)
-          return 'export default null'
+          ftl = ''
         }
+
+        return `
+import { FluentResource } from '@fluent/bundle'
+export default new FluentResource(${JSON.stringify(ftl)})
+`
       }
     },
     async transform(code, id) {
