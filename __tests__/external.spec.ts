@@ -24,11 +24,32 @@ const testBundle = async(options: RollupOptions): Promise<string> => {
 }
 
 describe('external ftl file support', () => {
-  it('can read files from a directory', async() => {
+  it('works with vue 3', async() => {
     // Arrange
     // Act
     const code = await testBundle({
       input: resolve(baseDir, 'fixtures/components/external.vue'),
+      plugins: [
+        vue3(),
+        fluentPlugin({
+          external: {
+            baseDir: resolve(baseDir, 'fixtures'),
+            ftlDir: resolve(baseDir, 'fixtures/ftl'),
+            locales: ['en', 'da'],
+          },
+        }),
+      ],
+    })
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
+  it('works with vue 3 script setup', async() => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      input: resolve(baseDir, 'fixtures/components/external.setup.vue'),
       plugins: [
         vue3(),
         fluentPlugin({

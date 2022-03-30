@@ -1,32 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`external ftl file support > can read files from a directory 1`] = `
-"'use strict';
-
-var bundle = require('@fluent/bundle');
-var vue = require('vue');
-
-var en_ftl = new bundle.FluentResource(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
-
-var da_ftl = new bundle.FluentResource(\\"\\");
-
-function render(_ctx, _cache) {
-  return (vue.openBlock(), vue.createElementBlock(\\"div\\", null, [
-    vue.createElementVNode(\\"div\\", null, vue.toDisplayString(_ctx.$t('hello-user', { userName: _ctx.userName })), 1 /* TEXT */),
-    vue.createElementVNode(\\"div\\", null, vue.toDisplayString(_ctx.$t('shared-photos', { userName: _ctx.userName, photoCount: _ctx.photoCount, userGender: _ctx.userGender })), 1 /* TEXT */)
-  ]))
-}
-
-const script = {};
-
-script.fluent = { en: en_ftl, da: da_ftl };
-script.render = render;
-script.__file = \\"__tests__/fixtures/components/external.vue\\";
-
-module.exports = script;
-"
-`;
-
 exports[`external ftl file support > works with vue 2 1`] = `
 "'use strict';
 
@@ -151,10 +124,69 @@ function __vue2_injectStyles (context) {
     this[o] = __cssModules[o];
   }
 }
+
 __component__.options.fluent = { en: en_ftl, da: da_ftl };
 __component__.options.__file = \\"__tests__/fixtures/components/external.vue\\";
 var external = /*#__PURE__*/(function () { return __component__.exports })();
 
 module.exports = external;
+"
+`;
+
+exports[`external ftl file support > works with vue 3 1`] = `
+"'use strict';
+
+var bundle = require('@fluent/bundle');
+var vue = require('vue');
+
+var en_ftl = new bundle.FluentResource(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+
+var da_ftl = new bundle.FluentResource(\\"\\");
+
+function render(_ctx, _cache) {
+  return (vue.openBlock(), vue.createElementBlock(\\"div\\", null, [
+    vue.createElementVNode(\\"div\\", null, vue.toDisplayString(_ctx.$t('hello-user', { userName: _ctx.userName })), 1 /* TEXT */),
+    vue.createElementVNode(\\"div\\", null, vue.toDisplayString(_ctx.$t('shared-photos', { userName: _ctx.userName, photoCount: _ctx.photoCount, userGender: _ctx.userGender })), 1 /* TEXT */)
+  ]))
+}
+
+const script = {};
+
+
+script.render = render;
+script.fluent = { en: en_ftl, da: da_ftl };
+script.__file = \\"__tests__/fixtures/components/external.vue\\";
+
+module.exports = script;
+"
+`;
+
+exports[`external ftl file support > works with vue 3 script setup 1`] = `
+"'use strict';
+
+require('@fluent/bundle');
+var vue = require('vue');
+
+var en_ftl = null;
+
+var da_ftl = null;
+
+var script = {
+  setup(__props) {
+
+return (_ctx, _cache) => {
+  return (vue.openBlock(), vue.createElementBlock(\\"div\\", null, [
+    vue.createElementVNode(\\"div\\", null, vue.toDisplayString(_ctx.$t('hello-user', { userName: _ctx.userName })), 1 /* TEXT */),
+    vue.createElementVNode(\\"div\\", null, vue.toDisplayString(_ctx.$t('shared-photos', { userName: _ctx.userName, photoCount: _ctx.photoCount, userGender: _ctx.userGender })), 1 /* TEXT */)
+  ]))
+}
+}
+
+};
+
+script.fluent = { en: en_ftl, da: da_ftl };
+script.__file = \\"__tests__/fixtures/components/external.setup.vue\\";
+
+module.exports = script;
 "
 `;
