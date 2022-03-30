@@ -3,7 +3,7 @@ import { join, relative } from 'path'
 import { promises as fs } from 'fs'
 import MagicString from 'magic-string'
 
-import type { Plugin } from 'rollup'
+import type { Plugin } from 'vite'
 
 export interface ExternalConfig {
   baseDir: string
@@ -51,7 +51,7 @@ function getInsertInfo(source: string): InsertInfo {
       target = '_sfc_main'
   }
 
-  if (insertPos === -1)
+  if (insertPos === -1 || target === null)
     throw new Error('Could not parse vue component')
 
   return { insertPos, target }
