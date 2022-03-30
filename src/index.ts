@@ -35,7 +35,7 @@ function getInsertInfo(source: string): InsertInfo {
     vue = 2
   }
   else {
-    insertPos = source.indexOf('script.render = render')
+    insertPos = source.indexOf('script.__file')
     vue = 3
   }
 
@@ -56,11 +56,17 @@ export default function fluentPlugin({ blockType = 'fluent', external }: PluginO
     },
     async load(id) {
       if (id.endsWith('.ftl')) {
-        const ftl = await fs.readFile(id, 'utf8')
-        return `
+        try {
+          const ftl = await fs.readFile(id, 'utf8')
+          return `
 import { FluentResource } from '@fluent/bundle'
 export default new FluentResource(${JSON.stringify(ftl)})
 `
+        }
+        catch (e) {
+          this.warn(`Missing ftl file: ${id}`)
+          return 'export default null'
+        }
       }
     },
     async transform(code, id) {
@@ -79,7 +85,7 @@ export default new FluentResource(${JSON.stringify(ftl)})
         magic.prepend('import { FluentResource } from \'@fluent/bundle\';\n')
 
         const { insertPos, target } = getInsertInfo(code)
-        magic.appendLeft(insertPos - 1, `${target}.fluent = { ${external.locales.map(locale => `${locale}: ${locale}_ftl`).join(', ')} }`)
+        magic.appendLeft(insertPos, `${target}.fluent = { ${external.locales.map(locale => `${locale}: ${locale}_ftl`).join(', ')} };\n`)
 
         return {
           code: magic.toString(),
