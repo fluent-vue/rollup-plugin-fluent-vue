@@ -100,24 +100,4 @@ describe('vite plugin', () => {
     // Assert
     expect(code).toMatchSnapshot()
   })
-
-  it('errors with no locale attr', async() => {
-    // Arrange
-    const func = async(): Promise<string | undefined> => await testBundle({
-      plugins: [
-        vue3(),
-        fluentPlugin(),
-      ],
-    }, '/fixtures/noLocale.vue')
-
-    // TODO: Use rejects
-    try {
-      // Act
-      await func()
-    }
-    catch (err) {
-      // Assert
-      expect(err).toMatchSnapshot()
-    }
-  })
 })

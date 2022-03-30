@@ -27,8 +27,6 @@ import _export_sfc from '/@id/plugin-vue:export-helper'
 export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',\\"/home/demivan/projects/fluent/rollup-plugin-fluent-vue/__tests__/fixtures/blockType.vue\\"]])"
 `;
 
-exports[`vite plugin > errors with no locale attr 1`] = `[TypeError: Cannot read properties of null (reading 'parse')]`;
-
 exports[`vite plugin > generates custom block code 1`] = `
 "import { createHotContext as __vite__createHotContext } from \\"/@vite/client\\";import.meta.hot = __vite__createHotContext(\\"/fixtures/test.vue\\");const _sfc_main = {}
 import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"/@id/vue\\"

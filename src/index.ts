@@ -30,20 +30,29 @@ function normalizePath(path: string) {
 * Get insert position and target component object.
 */
 function getInsertInfo(source: string): InsertInfo {
-  let vue = null
+  let target = null
+
+  // vite-plugin-vue2
   let insertPos = source.indexOf('__component__.options.__file')
-  if (insertPos > -1) {
-    vue = 2
-  }
-  else {
+  if (insertPos !== -1)
+    target = '__component__.options'
+
+  // rollup-plugin-vue
+  if (insertPos === -1) {
     insertPos = source.indexOf('script.__file')
-    vue = 3
+    if (insertPos !== -1)
+      target = 'script'
+  }
+
+  // @vitejs/plugin-vue
+  if (insertPos === -1) {
+    insertPos = source.indexOf('_sfc_main.__hmrId')
+    if (insertPos !== -1)
+      target = '_sfc_main'
   }
 
   if (insertPos === -1)
     throw new Error('Could not parse vue component')
-
-  const target = vue === 2 ? '__component__.options' : 'script'
 
   return { insertPos, target }
 }
