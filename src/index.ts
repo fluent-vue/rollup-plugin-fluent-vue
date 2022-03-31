@@ -57,6 +57,20 @@ function getInsertInfo(source: string): InsertInfo {
   return { insertPos, target }
 }
 
+function cleanLocale(str: string) {
+  return str.replace('-', '_')
+}
+
+async function fileExists(filename: string): Promise<boolean> {
+  try {
+    const stat = await fs.stat(filename, { throwIfNoEntry: false } as any)
+    return !!stat
+  }
+  catch {
+    return false
+  }
+}
+
 export default function fluentPlugin({ blockType = 'fluent', external }: PluginOptions = {}): Plugin {
   return {
     name: 'rollup-plugin-fluent-vue',
@@ -88,11 +102,24 @@ export default new FluentResource(${JSON.stringify(ftl)})
 
         const magic = new MagicString(code, { filename: id })
 
-        magic.prepend(`${external.locales.map(locale => `import ${locale}_ftl from '${normalizePath(join(external.ftlDir, locale, relativePath))}.ftl'`).join(';\n')};\n`)
-        magic.prepend('import { FluentResource } from \'@fluent/bundle\';\n')
+        const existingTranslations = []
+        for (const locale of external.locales) {
+          const ftlPath = normalizePath(join(external.ftlDir, locale, `${relativePath}.ftl`))
+          this.addWatchFile(ftlPath)
+
+          const ftlExists = await fileExists(ftlPath)
+
+          if (ftlExists) {
+            existingTranslations.push(locale)
+            magic.prepend(`import ${cleanLocale(locale)}_ftl from '${ftlPath}';\n`)
+          }
+        }
 
         const { insertPos, target } = getInsertInfo(code)
-        magic.appendLeft(insertPos, `${target}.fluent = { ${external.locales.map(locale => `'${locale}': ${locale}_ftl`).join(', ')} };\n`)
+
+        magic.appendLeft(insertPos, `${target}.fluent = ${target}.fluent || {};\n`)
+        for (const locale of existingTranslations)
+          magic.appendLeft(insertPos, `${target}.fluent['${cleanLocale(locale)}'] = ${cleanLocale(locale)}_ftl\n`)
 
         return {
           code: magic.toString(),
