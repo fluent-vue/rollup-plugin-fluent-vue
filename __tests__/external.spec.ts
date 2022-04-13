@@ -1,4 +1,3 @@
-
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
@@ -83,6 +82,28 @@ describe('external ftl file support', () => {
     expect(code).toMatchSnapshot()
   })
 
+  it('works with vue 3 in production', async() => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      root: baseDir,
+      mode: 'production',
+      plugins: [
+        vue3(),
+        fluentPlugin({
+          external: {
+            baseDir: resolve(baseDir, 'fixtures'),
+            ftlDir: resolve(baseDir, 'fixtures/ftl'),
+            locales: ['en', 'da'],
+          },
+        }),
+      ],
+    }, '/fixtures/components/external.vue')
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
   it('works with vue 3 rollup plugin', async() => {
     // Arrange
     // Act
@@ -104,11 +125,55 @@ describe('external ftl file support', () => {
     expect(code).toMatchSnapshot()
   })
 
+  it('works with vue 3 rollup plugin in production', async() => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      root: baseDir,
+      mode: 'production',
+      plugins: [
+        rollupVue3(),
+        fluentPlugin({
+          external: {
+            baseDir: resolve(baseDir, 'fixtures'),
+            ftlDir: resolve(baseDir, 'fixtures/ftl'),
+            locales: ['en', 'da'],
+          },
+        }),
+      ],
+    }, '/fixtures/components/external.vue')
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
   it('works with vue 2', async() => {
     // Arrange
     // Act
     const code = await testBundle({
       root: baseDir,
+      plugins: [
+        vue2(),
+        fluentPlugin({
+          external: {
+            baseDir: resolve(baseDir, 'fixtures'),
+            ftlDir: resolve(baseDir, 'fixtures/ftl'),
+            locales: ['en', 'da'],
+          },
+        }),
+      ],
+    }, '/fixtures/components/external.vue')
+
+    // Assert
+    expect(code).toMatchSnapshot()
+  })
+
+  it('works with vue 2 in production', async() => {
+    // Arrange
+    // Act
+    const code = await testBundle({
+      root: baseDir,
+      mode: 'production',
       plugins: [
         vue2(),
         fluentPlugin({

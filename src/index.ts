@@ -33,23 +33,19 @@ function getInsertInfo(source: string): InsertInfo {
   let target = null
 
   // vite-plugin-vue2
-  let insertPos = source.indexOf('__component__.options.__file')
-  if (insertPos !== -1)
-    target = '__component__.options'
+  if (source.includes('__component__'))
+    target = '__component__'
 
   // rollup-plugin-vue
-  if (insertPos === -1) {
-    insertPos = source.indexOf('script.__file')
-    if (insertPos !== -1)
-      target = 'script'
-  }
+  if (source.includes('export default script'))
+    target = 'script'
 
   // @vitejs/plugin-vue
-  if (insertPos === -1) {
-    insertPos = source.indexOf('_sfc_main.__hmrId')
-    if (insertPos !== -1)
-      target = '_sfc_main'
+  if (source.includes('_sfc_main')) {
+    target = '_sfc_main'
   }
+
+  const insertPos = source.indexOf('export default')
 
   if (insertPos === -1 || target === null)
     throw new Error('Could not parse vue component')

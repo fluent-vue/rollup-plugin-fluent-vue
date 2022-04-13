@@ -26,9 +26,6 @@ function __vue2_injectStyles (context) {
   }
 }
 
-__component__.options.fluent = __component__.options.fluent || {};
-__component__.options.fluent['en'] = en_ftl
-__component__.options.fluent['da'] = da_ftl
 __component__.options.__file = \\"fixtures/components/external.vue\\"
 /* hot reload */
 import __VUE_HMR_RUNTIME__ from \\"/@id/__x00__/vite/vueHotReload\\"
@@ -45,6 +42,41 @@ if(!import.meta.env.SSR && __VUE_HMR_RUNTIME__.compatible){
       __VUE_HMR_RUNTIME__.rerender(\\"4c0553ad\\", update)
    })
 }
+__component__.fluent = __component__.fluent || {};
+__component__.fluent['en'] = en_ftl
+__component__.fluent['da'] = da_ftl
+export default /*#__PURE__*/(function () { return __component__.exports })()"
+`;
+
+exports[`external ftl file support > works with vue 2 in production 1`] = `
+"import da_ftl from '/fixtures/ftl/da/components/external.vue.ftl?import';
+import en_ftl from '/fixtures/ftl/en/components/external.vue.ftl?import';
+const __vue2_script = {}
+import { render as __vue2_render, staticRenderFns as __vue2_staticRenderFns } from \\"/fixtures/components/external.vue?vue&type=template&lang.js\\"
+const __cssModules = {}
+
+/* normalize component */
+import __vue2_normalizer from \\"/@id/__x00__/vite/vueComponentNormalizer\\"
+var __component__ = /*#__PURE__*/__vue2_normalizer(
+  __vue2_script,
+  __vue2_render,
+  __vue2_staticRenderFns,
+  false,
+  __vue2_injectStyles,
+  null,
+  null,
+  null
+)
+
+function __vue2_injectStyles (context) {
+  for(let o in __cssModules){
+    this[o] = __cssModules[o]
+  }
+}
+
+__component__.fluent = __component__.fluent || {};
+__component__.fluent['en'] = en_ftl
+__component__.fluent['da'] = da_ftl
 export default /*#__PURE__*/(function () { return __component__.exports })()"
 `;
 
@@ -62,9 +94,6 @@ function _sfc_render(_ctx, _cache) {
 }
 
 
-_sfc_main.fluent = _sfc_main.fluent || {};
-_sfc_main.fluent['en'] = en_ftl
-_sfc_main.fluent['da'] = da_ftl
 _sfc_main.__hmrId = \\"4c0553ad\\"
 typeof __VUE_HMR_RUNTIME__ !== 'undefined' && __VUE_HMR_RUNTIME__.createRecord(_sfc_main.__hmrId, _sfc_main)
 import.meta.hot.accept(({ default: updated, _rerender_only }) => {
@@ -75,21 +104,58 @@ import.meta.hot.accept(({ default: updated, _rerender_only }) => {
   }
 })
 import _export_sfc from '/@id/plugin-vue:export-helper'
+_sfc_main.fluent = _sfc_main.fluent || {};
+_sfc_main.fluent['en'] = en_ftl
+_sfc_main.fluent['da'] = da_ftl
 export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',\\"/home/demivan/projects/fluent/rollup-plugin-fluent-vue/__tests__/fixtures/components/external.vue\\"]])"
+`;
+
+exports[`external ftl file support > works with vue 3 in production 1`] = `
+"import da_ftl from '/fixtures/ftl/da/components/external.vue.ftl?import';
+import en_ftl from '/fixtures/ftl/en/components/external.vue.ftl?import';
+const _sfc_main = {}
+import { toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \\"/@id/vue\\"
+
+function _sfc_render(_ctx, _cache) {
+  return (_openBlock(), _createElementBlock(\\"div\\", null, [
+    _createElementVNode(\\"div\\", null, _toDisplayString(_ctx.$t('hello-user', { userName: _ctx.userName })), 1 /* TEXT */),
+    _createElementVNode(\\"div\\", null, _toDisplayString(_ctx.$t('shared-photos', { userName: _ctx.userName, photoCount: _ctx.photoCount, userGender: _ctx.userGender })), 1 /* TEXT */)
+  ]))
+}
+
+
+import _export_sfc from '/@id/plugin-vue:export-helper'
+_sfc_main.fluent = _sfc_main.fluent || {};
+_sfc_main.fluent['en'] = en_ftl
+_sfc_main.fluent['da'] = da_ftl
+export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render]])"
 `;
 
 exports[`external ftl file support > works with vue 3 rollup plugin 1`] = `
 "import da_ftl from '/fixtures/ftl/da/components/external.vue.ftl?import';
 import en_ftl from '/fixtures/ftl/en/components/external.vue.ftl?import';
 const script = {}
-import { render } from \\"/fixtures/components/external.vue?vue&type=template&id=8d0ca2ca&lang.js\\"
+import { render } from \\"/fixtures/components/external.vue?vue&type=template&id=1e181a1e&lang.js\\"
 
 
 script.render = render
 script.fluent = script.fluent || {};
 script.fluent['en'] = en_ftl
 script.fluent['da'] = da_ftl
-script.__file = \\"__tests__/fixtures/components/external.vue\\"
+export default script"
+`;
+
+exports[`external ftl file support > works with vue 3 rollup plugin in production 1`] = `
+"import da_ftl from '/fixtures/ftl/da/components/external.vue.ftl?import';
+import en_ftl from '/fixtures/ftl/en/components/external.vue.ftl?import';
+const script = {}
+import { render } from \\"/fixtures/components/external.vue?vue&type=template&id=1e181a1e&lang.js\\"
+
+
+script.render = render
+script.fluent = script.fluent || {};
+script.fluent['en'] = en_ftl
+script.fluent['da'] = da_ftl
 export default script"
 `;
 
@@ -117,8 +183,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 }
 
 
-_sfc_main.fluent = _sfc_main.fluent || {};
-_sfc_main.fluent['en'] = en_ftl
 _sfc_main.__hmrId = \\"f4d31108\\"
 typeof __VUE_HMR_RUNTIME__ !== 'undefined' && __VUE_HMR_RUNTIME__.createRecord(_sfc_main.__hmrId, _sfc_main)
 import.meta.hot.accept(({ default: updated, _rerender_only }) => {
@@ -129,5 +193,7 @@ import.meta.hot.accept(({ default: updated, _rerender_only }) => {
   }
 })
 import _export_sfc from '/@id/plugin-vue:export-helper'
+_sfc_main.fluent = _sfc_main.fluent || {};
+_sfc_main.fluent['en'] = en_ftl
 export default /*#__PURE__*/_export_sfc(_sfc_main, [['render',_sfc_render],['__file',\\"/home/demivan/projects/fluent/rollup-plugin-fluent-vue/__tests__/fixtures/components/external.setup.vue\\"]])"
 `;
