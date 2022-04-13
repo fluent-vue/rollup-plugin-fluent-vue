@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-fluent-vue",
-  "version": "3.1.0-4",
+  "version": "3.1.0-5",
   "description": "Rollup and Vite plugin for custom block support for fluent-vue",
   "keywords": [
     "localization",
