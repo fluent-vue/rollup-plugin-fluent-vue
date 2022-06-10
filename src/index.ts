@@ -41,9 +41,8 @@ function getInsertInfo(source: string): InsertInfo {
     target = 'script'
 
   // @vitejs/plugin-vue
-  if (source.includes('_sfc_main')) {
+  if (source.includes('_sfc_main'))
     target = '_sfc_main'
-  }
 
   const insertPos = source.indexOf('export default')
 
