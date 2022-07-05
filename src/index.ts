@@ -114,7 +114,7 @@ export default new FluentResource(${JSON.stringify(ftl)})
 
         magic.appendLeft(insertPos, `${target}.fluent = ${target}.fluent || {};\n`)
         for (const locale of existingTranslations)
-          magic.appendLeft(insertPos, `${target}.fluent['${cleanLocale(locale)}'] = ${cleanLocale(locale)}_ftl\n`)
+          magic.appendLeft(insertPos, `${target}.fluent['${locale}'] = ${cleanLocale(locale)}_ftl\n`)
 
         return {
           code: magic.toString(),
