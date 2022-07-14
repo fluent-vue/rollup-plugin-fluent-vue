@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`vite plugin mode:development > custom blockType 1`] = `
-"\\\\ assets/blockType.a15112ad.js
+"
 
 var _missingExportShim = void 0;
 function block0(Component) {
@@ -28,7 +28,7 @@ if (typeof block0 === \\"function\\")
 `;
 
 exports[`vite plugin mode:development > generates custom block code 1`] = `
-"\\\\ assets/test.460d8b2e.js
+"
 
 var _missingExportShim = void 0;
 function block0(Component) {
@@ -55,7 +55,7 @@ if (typeof block0 === \\"function\\")
 `;
 
 exports[`vite plugin mode:development > works with rollup plugin 1`] = `
-"\\\\ assets/test.bc87bf83.js
+"
 
 var _missingExportShim = void 0;
 function render(_ctx, _cache) {
@@ -89,7 +89,7 @@ script.render = render;
 `;
 
 exports[`vite plugin mode:development > works with vue 2 1`] = `
-"\\\\ assets/test.0cf2e333.js
+"
 
 var _missingExportShim = void 0;
 var render = function() {
@@ -183,7 +183,7 @@ __component__.options.__file = \\"fixtures/test.vue\\";
 `;
 
 exports[`vite plugin mode:production > custom blockType 1`] = `
-"\\\\ assets/blockType.a15112ad.js
+"
 
 var _missingExportShim = void 0;
 function block0(Component) {
@@ -210,7 +210,7 @@ if (typeof block0 === \\"function\\")
 `;
 
 exports[`vite plugin mode:production > generates custom block code 1`] = `
-"\\\\ assets/test.460d8b2e.js
+"
 
 var _missingExportShim = void 0;
 function block0(Component) {
@@ -237,7 +237,7 @@ if (typeof block0 === \\"function\\")
 `;
 
 exports[`vite plugin mode:production > works with rollup plugin 1`] = `
-"\\\\ assets/test.bc87bf83.js
+"
 
 var _missingExportShim = void 0;
 function render(_ctx, _cache) {
@@ -271,7 +271,7 @@ script.render = render;
 `;
 
 exports[`vite plugin mode:production > works with vue 2 1`] = `
-"\\\\ assets/test.70edb105.js
+"
 
 var _missingExportShim = void 0;
 var render = function() {

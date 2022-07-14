@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`external ftl file support mode:development > works with vue 2 1`] = `
-"\\\\ assets/external.00e557e3.js
+"
 
 var _missingExportShim = void 0;
 var da_ftl = new _missingExportShim(\\"\\");
@@ -81,7 +81,7 @@ __component__.fluent[\\"da\\"] = da_ftl;
 `;
 
 exports[`external ftl file support mode:development > works with vue 3 1`] = `
-"\\\\ assets/external.a1cd7bc1.js
+"
 
 var _missingExportShim = void 0;
 var da_ftl = new _missingExportShim(\\"\\");
@@ -94,7 +94,7 @@ _sfc_main.fluent[\\"da\\"] = da_ftl;
 `;
 
 exports[`external ftl file support mode:development > works with vue 3 rollup plugin 1`] = `
-"\\\\ assets/external.74efcebf.js
+"
 
 var _missingExportShim = void 0;
 var da_ftl = new _missingExportShim(\\"\\");
@@ -115,7 +115,7 @@ script.fluent[\\"da\\"] = da_ftl;
 `;
 
 exports[`external ftl file support mode:development > works with vue 3 script setup 1`] = `
-"\\\\ assets/external.setup.2a8c1ec1.js
+"
 
 var _missingExportShim = void 0;
 var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
@@ -135,7 +135,7 @@ _sfc_main.fluent[\\"en\\"] = en_ftl;
 `;
 
 exports[`external ftl file support mode:production > works with vue 2 1`] = `
-"\\\\ assets/external.48b50c1b.js
+"
 
 var _missingExportShim = void 0;
 var da_ftl = new _missingExportShim(\\"\\");
@@ -213,7 +213,7 @@ __component__.fluent[\\"da\\"] = da_ftl;
 `;
 
 exports[`external ftl file support mode:production > works with vue 3 1`] = `
-"\\\\ assets/external.a1cd7bc1.js
+"
 
 var _missingExportShim = void 0;
 var da_ftl = new _missingExportShim(\\"\\");
@@ -226,7 +226,7 @@ _sfc_main.fluent[\\"da\\"] = da_ftl;
 `;
 
 exports[`external ftl file support mode:production > works with vue 3 rollup plugin 1`] = `
-"\\\\ assets/external.f9d6970b.js
+"
 
 var _missingExportShim = void 0;
 var da_ftl = new _missingExportShim(\\"\\");
@@ -246,7 +246,7 @@ script.fluent[\\"da\\"] = da_ftl;
 `;
 
 exports[`external ftl file support mode:production > works with vue 3 script setup 1`] = `
-"\\\\ assets/external.setup.2a8c1ec1.js
+"
 
 var _missingExportShim = void 0;
 var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");

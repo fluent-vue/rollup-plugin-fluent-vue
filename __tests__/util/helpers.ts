@@ -15,6 +15,7 @@ export const testBundle = async(options: InlineConfig, file: string): Promise<st
         shimMissingExports: true,
       },
       minify: false,
+      write: false,
     },
     plugins: [
       ...(options.plugins as any),
@@ -34,6 +35,6 @@ export const testBundle = async(options: InlineConfig, file: string): Promise<st
   const output = (out as any).output
   
   return output
-    ?.map((o: { code: string, fileName: string }) => `\\ ${o.fileName}\n\n${o.code}`)
+    ?.map((o: { code: string }) => `\n\n${o.code}`)
     .join('\n')
 }
