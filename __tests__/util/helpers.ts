@@ -1,6 +1,7 @@
-import { build, InlineConfig } from 'vite'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
+import type { InlineConfig } from 'vite'
+import { build } from 'vite'
 
 const baseDir = dirname(fileURLToPath(import.meta.url))
 
@@ -33,7 +34,7 @@ export const testBundle = async(options: InlineConfig, file: string): Promise<st
   })
 
   const output = (out as any).output
-  
+
   return output
     ?.map((o: { code: string }) => `\n\n${o.code}`)
     .join('\n')

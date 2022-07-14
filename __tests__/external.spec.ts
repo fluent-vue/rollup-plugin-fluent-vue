@@ -7,16 +7,14 @@ import vue3base from '@vitejs/plugin-vue'
 import compiler from '@vue/compiler-sfc'
 import { createVuePlugin as vue2 } from 'vite-plugin-vue2'
 
-import { testBundle } from './util/helpers'
-
 import fluentPlugin from '../src'
+import { testBundle } from './util/helpers'
 
 const vue3 = () => vue3base({
   compiler,
 })
 
 const baseDir = dirname(fileURLToPath(import.meta.url))
-
 
 describe.each(['development', 'production'])('external ftl file support mode:%s', (mode) => {
   it('works with vue 3', async() => {

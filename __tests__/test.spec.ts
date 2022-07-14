@@ -5,9 +5,8 @@ import compiler from '@vue/compiler-sfc'
 import rollupVue3 from 'rollup-plugin-vue'
 import { createVuePlugin as vue2 } from 'vite-plugin-vue2'
 
-import { testBundle } from './util/helpers'
-
 import fluentPlugin from '../src'
+import { testBundle } from './util/helpers'
 
 const vue3 = () => vue3base({
   compiler,
