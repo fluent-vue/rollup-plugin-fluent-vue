@@ -60,7 +60,7 @@
     "typescript": "*",
     "vite": "2.8.6",
     "vite-plugin-vue2": "1.9.3",
-    "vitest": "0.7.12",
+    "vitest": "0.18.0",
     "vue-template-compiler": "2.6.14"
   }
 }
