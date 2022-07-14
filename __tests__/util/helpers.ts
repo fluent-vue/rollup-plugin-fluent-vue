@@ -1,0 +1,39 @@
+import { build, InlineConfig } from 'vite'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
+
+const baseDir = dirname(fileURLToPath(import.meta.url))
+
+export const testBundle = async(options: InlineConfig, file: string): Promise<string | undefined> => {
+  const out = await build({
+    root: resolve(baseDir, '..'),
+    mode: 'production',
+    ...options,
+    build: {
+      rollupOptions: {
+        input: file,
+        shimMissingExports: true,
+      },
+      minify: false,
+    },
+    plugins: [
+      ...(options.plugins as any),
+      {
+        resolveId(id) {
+          if (id === 'vue' || id === '@fluent/bundle')
+            return id
+        },
+        load(id) {
+          if (id === 'vue' || id === '@fluent/bundle')
+            return 'export default {}'
+        },
+      },
+    ],
+  })
+
+  const output = (out as any).output
+  
+  return output
+    ?.map((o: { code: string, fileName: string }) => `\\ ${o.fileName}\n\n${o.code}`)
+    .join('\n')
+}

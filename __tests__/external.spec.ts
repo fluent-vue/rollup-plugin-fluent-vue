@@ -7,8 +7,8 @@ import vue3base from '@vitejs/plugin-vue'
 import compiler from '@vue/compiler-sfc'
 import { createVuePlugin as vue2 } from 'vite-plugin-vue2'
 
-import type { InlineConfig } from 'vite'
-import { createServer } from 'vite'
+import { testBundle } from './util/helpers'
+
 import fluentPlugin from '../src'
 
 const vue3 = () => vue3base({
@@ -17,34 +17,13 @@ const vue3 = () => vue3base({
 
 const baseDir = dirname(fileURLToPath(import.meta.url))
 
-const testBundle = async(options: InlineConfig, file: string): Promise<string | undefined> => {
-  const vite = await createServer({
-    ...options,
-    plugins: [
-      ...options.plugins,
-      {
-        resolveId(id) {
-          if (id === 'vue' || id === '@fluent/bundle')
-            return id
-        },
-        load(id) {
-          if (id === 'vue' || id === '@fluent/bundle')
-            return 'export default {}'
-        },
-      },
-    ],
-  })
 
-  const output = await vite.transformRequest(file)
-  return output?.code
-}
-
-describe('external ftl file support', () => {
+describe.each(['development', 'production'])('external ftl file support mode:%s', (mode) => {
   it('works with vue 3', async() => {
     // Arrange
     // Act
     const code = await testBundle({
-      root: baseDir,
+      mode,
       plugins: [
         vue3(),
         fluentPlugin({
@@ -65,7 +44,7 @@ describe('external ftl file support', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      root: baseDir,
+      mode,
       plugins: [
         vue3(),
         fluentPlugin({
@@ -82,55 +61,11 @@ describe('external ftl file support', () => {
     expect(code).toMatchSnapshot()
   })
 
-  it('works with vue 3 in production', async() => {
-    // Arrange
-    // Act
-    const code = await testBundle({
-      root: baseDir,
-      mode: 'production',
-      plugins: [
-        vue3(),
-        fluentPlugin({
-          external: {
-            baseDir: resolve(baseDir, 'fixtures'),
-            ftlDir: resolve(baseDir, 'fixtures/ftl'),
-            locales: ['en', 'da'],
-          },
-        }),
-      ],
-    }, '/fixtures/components/external.vue')
-
-    // Assert
-    expect(code).toMatchSnapshot()
-  })
-
   it('works with vue 3 rollup plugin', async() => {
     // Arrange
     // Act
     const code = await testBundle({
-      root: baseDir,
-      plugins: [
-        rollupVue3(),
-        fluentPlugin({
-          external: {
-            baseDir: resolve(baseDir, 'fixtures'),
-            ftlDir: resolve(baseDir, 'fixtures/ftl'),
-            locales: ['en', 'da'],
-          },
-        }),
-      ],
-    }, '/fixtures/components/external.vue')
-
-    // Assert
-    expect(code).toMatchSnapshot()
-  })
-
-  it('works with vue 3 rollup plugin in production', async() => {
-    // Arrange
-    // Act
-    const code = await testBundle({
-      root: baseDir,
-      mode: 'production',
+      mode,
       plugins: [
         rollupVue3(),
         fluentPlugin({
@@ -151,29 +86,7 @@ describe('external ftl file support', () => {
     // Arrange
     // Act
     const code = await testBundle({
-      root: baseDir,
-      plugins: [
-        vue2(),
-        fluentPlugin({
-          external: {
-            baseDir: resolve(baseDir, 'fixtures'),
-            ftlDir: resolve(baseDir, 'fixtures/ftl'),
-            locales: ['en', 'da'],
-          },
-        }),
-      ],
-    }, '/fixtures/components/external.vue')
-
-    // Assert
-    expect(code).toMatchSnapshot()
-  })
-
-  it('works with vue 2 in production', async() => {
-    // Arrange
-    // Act
-    const code = await testBundle({
-      root: baseDir,
-      mode: 'production',
+      mode,
       plugins: [
         vue2(),
         fluentPlugin({
