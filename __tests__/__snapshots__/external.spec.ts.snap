@@ -3,9 +3,9 @@
 exports[`external ftl file support mode:development > works with vue 2 1`] = `
 "
 
-var _missingExportShim = void 0;
-var da_ftl = new _missingExportShim(\\"\\");
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const da_ftl = new _missingExportShim(\\"\\");
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
@@ -83,9 +83,9 @@ __component__.fluent[\\"da\\"] = da_ftl;
 exports[`external ftl file support mode:development > works with vue 3 1`] = `
 "
 
-var _missingExportShim = void 0;
-var da_ftl = new _missingExportShim(\\"\\");
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const da_ftl = new _missingExportShim(\\"\\");
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 const _sfc_main = {};
 _sfc_main.fluent = _sfc_main.fluent || {};
 _sfc_main.fluent[\\"en\\"] = en_ftl;
@@ -96,9 +96,9 @@ _sfc_main.fluent[\\"da\\"] = da_ftl;
 exports[`external ftl file support mode:development > works with vue 3 rollup plugin 1`] = `
 "
 
-var _missingExportShim = void 0;
-var da_ftl = new _missingExportShim(\\"\\");
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const da_ftl = new _missingExportShim(\\"\\");
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 function render(_ctx, _cache) {
   return _missingExportShim(), _missingExportShim(\\"div\\", null, [
     _missingExportShim(\\"div\\", null, _missingExportShim(_ctx.$t(\\"hello-user\\", { userName: _ctx.userName })), 1),
@@ -117,8 +117,8 @@ script.fluent[\\"da\\"] = da_ftl;
 exports[`external ftl file support mode:development > works with vue 3 script setup 1`] = `
 "
 
-var _missingExportShim = void 0;
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 const _sfc_main = {
   setup(__props) {
     return (_ctx, _cache) => {
@@ -137,9 +137,9 @@ _sfc_main.fluent[\\"en\\"] = en_ftl;
 exports[`external ftl file support mode:production > works with vue 2 1`] = `
 "
 
-var _missingExportShim = void 0;
-var da_ftl = new _missingExportShim(\\"\\");
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const da_ftl = new _missingExportShim(\\"\\");
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
@@ -215,9 +215,9 @@ __component__.fluent[\\"da\\"] = da_ftl;
 exports[`external ftl file support mode:production > works with vue 3 1`] = `
 "
 
-var _missingExportShim = void 0;
-var da_ftl = new _missingExportShim(\\"\\");
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const da_ftl = new _missingExportShim(\\"\\");
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 const _sfc_main = {};
 _sfc_main.fluent = _sfc_main.fluent || {};
 _sfc_main.fluent[\\"en\\"] = en_ftl;
@@ -228,9 +228,9 @@ _sfc_main.fluent[\\"da\\"] = da_ftl;
 exports[`external ftl file support mode:production > works with vue 3 rollup plugin 1`] = `
 "
 
-var _missingExportShim = void 0;
-var da_ftl = new _missingExportShim(\\"\\");
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const da_ftl = new _missingExportShim(\\"\\");
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 function render(_ctx, _cache) {
   return _missingExportShim(), _missingExportShim(\\"div\\", null, [
     _missingExportShim(\\"div\\", null, _missingExportShim(_ctx.$t(\\"hello-user\\", { userName: _ctx.userName })), 1),
@@ -248,8 +248,8 @@ script.fluent[\\"da\\"] = da_ftl;
 exports[`external ftl file support mode:production > works with vue 3 script setup 1`] = `
 "
 
-var _missingExportShim = void 0;
-var en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
+const _missingExportShim = void 0;
+const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 const _sfc_main = {
   setup(__props) {
     return (_ctx, _cache) => {

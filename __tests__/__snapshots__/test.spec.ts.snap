@@ -3,7 +3,7 @@
 exports[`vite plugin mode:development > custom blockType 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 function block0(Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
@@ -30,7 +30,7 @@ if (typeof block0 === \\"function\\")
 exports[`vite plugin mode:development > generates custom block code 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 function block0(Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
@@ -57,7 +57,7 @@ if (typeof block0 === \\"function\\")
 exports[`vite plugin mode:development > works with rollup plugin 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 function render(_ctx, _cache) {
   return _missingExportShim(), _missingExportShim(\\"div\\", null, [
     _missingExportShim(\\"div\\", null, _missingExportShim(_ctx.$t(\\"hello-user\\", { userName: _ctx.userName })), 1),
@@ -91,7 +91,7 @@ script.render = render;
 exports[`vite plugin mode:development > works with vue 2 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
@@ -99,7 +99,6 @@ var render = function() {
   return _c(\\"div\\", [_c(\\"div\\", [_vm._v(_vm._s(_vm.$t(\\"hello-user\\", { userName: _vm.userName })))]), _c(\\"div\\", [_vm._v(_vm._s(_vm.$t(\\"shared-photos\\", { userName: _vm.userName, photoCount: _vm.photoCount, userGender: _vm.userGender })))])]);
 };
 var staticRenderFns = [];
-render._withStripped = true;
 function normalizeComponent(scriptExports, render2, staticRenderFns2, functionalTemplate, injectStyles, scopeId, moduleIdentifier, shadowMode) {
   var options = typeof scriptExports === \\"function\\" ? scriptExports.options : scriptExports;
   if (render2) {
@@ -178,14 +177,13 @@ function __vue2_injectStyles(context) {
 }
 if (typeof block0 === \\"function\\")
   block0(__component__);
-__component__.options.__file = \\"fixtures/test.vue\\";
 "
 `;
 
 exports[`vite plugin mode:production > custom blockType 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 function block0(Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
@@ -212,7 +210,7 @@ if (typeof block0 === \\"function\\")
 exports[`vite plugin mode:production > generates custom block code 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 function block0(Component) {
   const target = Component.options || Component;
   target.fluent = target.fluent || {};
@@ -239,7 +237,7 @@ if (typeof block0 === \\"function\\")
 exports[`vite plugin mode:production > works with rollup plugin 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 function render(_ctx, _cache) {
   return _missingExportShim(), _missingExportShim(\\"div\\", null, [
     _missingExportShim(\\"div\\", null, _missingExportShim(_ctx.$t(\\"hello-user\\", { userName: _ctx.userName })), 1),
@@ -273,7 +271,7 @@ script.render = render;
 exports[`vite plugin mode:production > works with vue 2 1`] = `
 "
 
-var _missingExportShim = void 0;
+const _missingExportShim = void 0;
 var render = function() {
   var _vm = this;
   var _h = _vm.$createElement;
