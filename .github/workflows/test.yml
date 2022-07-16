@@ -18,13 +18,13 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         node: [16, 17]
     steps:
-      - uses: actions/checkout@v3.0.0
+      - uses: actions/checkout@v3.0.2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3.0.0
+      - uses: actions/setup-node@v3.4.1
         with:
           node-version: ${{ matrix.node }}
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.x.x
           run_install: true
@@ -39,11 +39,11 @@ jobs:
     runs-on: ubuntu-latest
     name: Lint source code
     steps:
-      - uses: actions/checkout@v3.0.0
+      - uses: actions/checkout@v3.0.2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3.0.0
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: actions/setup-node@v3.4.1
+      - uses: pnpm/action-setup@v2.2.2
         with:
           version: 7.x.x
           run_install: true
