@@ -17,7 +17,7 @@ const vue3 = () => vue3base({
 const baseDir = dirname(fileURLToPath(import.meta.url))
 
 describe.each(['development', 'production'])('external ftl file support mode:%s', (mode) => {
-  it('works with vue 3', async() => {
+  it('works with vue 3', async () => {
     // Arrange
     // Act
     const code = await testBundle({
@@ -38,7 +38,7 @@ describe.each(['development', 'production'])('external ftl file support mode:%s'
     expect(code).toMatchSnapshot()
   })
 
-  it('works with vue 3 script setup', async() => {
+  it('works with vue 3 script setup', async () => {
     // Arrange
     // Act
     const code = await testBundle({
@@ -59,7 +59,7 @@ describe.each(['development', 'production'])('external ftl file support mode:%s'
     expect(code).toMatchSnapshot()
   })
 
-  it('works with vue 3 rollup plugin', async() => {
+  it('works with vue 3 rollup plugin', async () => {
     // Arrange
     // Act
     const code = await testBundle({
@@ -80,7 +80,7 @@ describe.each(['development', 'production'])('external ftl file support mode:%s'
     expect(code).toMatchSnapshot()
   })
 
-  it('works with vue 2', async() => {
+  it('works with vue 2', async () => {
     // Arrange
     // Act
     const code = await testBundle({

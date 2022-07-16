@@ -59,15 +59,15 @@ Custom block tag name.
 Example of `App.vue` with custom block:
 
 ```vue
-<template>
-  <p>{{ $t('hello') }}</p>
-</template>
-
 <script>
 export default {
   name: 'App',
 }
 </script>
+
+<template>
+  <p>{{ $t('hello') }}</p>
+</template>
 
 <fluent locale="en">
 hello = hello world!

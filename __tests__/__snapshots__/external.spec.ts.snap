@@ -126,6 +126,7 @@ exports[`external ftl file support mode:development > works with vue 3 script se
 const _missingExportShim = void 0;
 const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 const _sfc_main = {
+  __name: \\"external.setup\\",
   setup(__props) {
     return (_ctx, _cache) => {
       return _missingExportShim(), _missingExportShim(\\"div\\", null, [
@@ -263,6 +264,7 @@ exports[`external ftl file support mode:production > works with vue 3 script set
 const _missingExportShim = void 0;
 const en_ftl = new _missingExportShim(\\"# Simple things are simple.\\\\nhello-user = Hello, {$userName}!\\\\n\\\\n# Complex things are possible.\\\\nshared-photos =\\\\n  {$userName} {$photoCount ->\\\\n     [one] added one photo\\\\n    *[other] added {$photoCount} new photos\\\\n  } to {$userGender ->\\\\n     [male] his stream\\\\n     [female] her stream\\\\n    *[other] their stream\\\\n  }.\\\\n\\");
 const _sfc_main = {
+  __name: \\"external.setup\\",
   setup(__props) {
     return (_ctx, _cache) => {
       return _missingExportShim(), _missingExportShim(\\"div\\", null, [

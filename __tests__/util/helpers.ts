@@ -5,7 +5,7 @@ import { build } from 'vite'
 
 const baseDir = dirname(fileURLToPath(import.meta.url))
 
-export const testBundle = async(options: InlineConfig, file: string): Promise<string | undefined> => {
+export const testBundle = async (options: InlineConfig, file: string): Promise<string | undefined> => {
   const out = await build({
     root: resolve(baseDir, '..'),
     mode: 'production',
