@@ -13,7 +13,7 @@ const vue3 = () => vue3base({
 })
 
 describe.each(['production', 'development'])('vite plugin mode:%s', (mode) => {
-  it('generates custom block code', async() => {
+  it('generates custom block code', async () => {
     // Arrange
     // Act
     const code = await testBundle({
@@ -28,7 +28,7 @@ describe.each(['production', 'development'])('vite plugin mode:%s', (mode) => {
     expect(code).toMatchSnapshot()
   })
 
-  it('works with rollup plugin', async() => {
+  it('works with rollup plugin', async () => {
     // Arrange
     // Act
     const code = await testBundle({
@@ -45,7 +45,7 @@ describe.each(['production', 'development'])('vite plugin mode:%s', (mode) => {
     expect(code).toMatchSnapshot()
   })
 
-  it('works with vue 2', async() => {
+  it('works with vue 2', async () => {
     // Arrange
     // Act
     const code = await testBundle({
@@ -60,7 +60,7 @@ describe.each(['production', 'development'])('vite plugin mode:%s', (mode) => {
     expect(code).toMatchSnapshot()
   })
 
-  it('custom blockType', async() => {
+  it('custom blockType', async () => {
     // Arrange
     // Act
     const code = await testBundle({
