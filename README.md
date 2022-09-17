@@ -1,3 +1,7 @@
+# ⚠ DEPRECATED ⚠
+
+**Funtionatily was moved to [unplugin-fluent-vue](https://github.com/fluent-vue/unplugin-fluent-vue)**
+
 rollup-plugin-fluent-vue
 =================
 
